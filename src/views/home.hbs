@@ -1,0 +1,10 @@
+<html>
+    <h1>FauxStore</h1>
+    <p>Welcome to our fake store</p>
+    <h2>Deals of the day</h2>
+    <ul>
+        {{#each deals}}
+            <li>{{description}}: {{promoCode}}</li>
+        {{/each}}
+    </ul>
+</html>
