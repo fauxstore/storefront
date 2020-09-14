@@ -1,12 +1,24 @@
-const express = require('express')
-const app = express()
+require('dotenv').config();
+require('axios-debug-log');
 
-const PORT = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const createServer = require('./src/server');
+const createDealsGateway = require('./src/dealsGateway');
 
-app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
-})
+const port = process.env.PORT || 3000;
+
+const dealsGateway = createDealsGateway({
+  baseUrl: envVarOrBust('DEALS_GATEWAY_BASE_URL')
+});
+
+createServer({port,dealsGateway});
+
+
+function envVarOrBust(envVarName){
+  const val = process.env[envVarName];
+  if(val){
+    return val;
+  }else{
+    throw `must provide ${envVarName} env var`;
+  }
+}

@@ -5,7 +5,11 @@
   "author": "Pete Hodgson <git@thepete.net>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.20.0",
+    "axios-debug-log": "^0.8.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1"
   },
   "scripts": {
     "start": "node index.js"
