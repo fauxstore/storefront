@@ -1,6 +1,12 @@
 require('dotenv').config();
 require('axios-debug-log');
 
+require("honeycomb-beeline")({
+  writeKey: process.env.HONEYCOMB_WRITE_KEY,
+  dataset: "fauxstore",
+  serviceName: "storefront"
+});
+
 
 const createServer = require('./src/server');
 const createDealsGateway = require('./src/dealsGateway');
